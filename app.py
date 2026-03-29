@@ -61,10 +61,9 @@ if uploaded_file and job_role:
     }
 
     job_skills = job_skills_map.get(job_role.lower().strip(), [])
-
-if not job_skills:
-    st.error("⚠️ Job role not found. Please enter a valid role like 'python developer'")
-    st.stop()
+    if not job_skills:
+       st.error("⚠️ Job role not found. Please enter a valid role like 'python developer'")
+       st.stop()
 
     score = match_score(resume_skills, job_skills)
     missing = set(job_skills) - set(resume_skills)
