@@ -40,7 +40,7 @@ st.markdown("### Analyze your resume and match with job roles instantly")
 st.markdown("---")
 
 uploaded_file = st.file_uploader("Upload Resume (PDF)", type="pdf")
-job_role = st.text_input("Enter Job Role")
+job_role = st.text_input("Enter Job Role (e.g., python developer, data analyst)")
 
 if uploaded_file and job_role:
     text = extract_text(uploaded_file)
@@ -61,6 +61,10 @@ if uploaded_file and job_role:
     }
 
     job_skills = job_skills_map.get(job_role.lower().strip(), [])
+
+if not job_skills:
+    st.error("⚠️ Job role not found. Please enter a valid role like 'python developer'")
+    st.stop()
 
     score = match_score(resume_skills, job_skills)
     missing = set(job_skills) - set(resume_skills)
