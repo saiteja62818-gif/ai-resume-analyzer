@@ -16,3 +16,6 @@ This project analyzes resumes and matches them with job roles using Python and S
 ## How to Run
 pip install streamlit PyPDF2
 python -m streamlit run app.py
+
+## 📸 Screenshot
+![App Screenshot](screenshot.png)
